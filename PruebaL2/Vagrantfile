@@ -42,6 +42,7 @@ Vagrant.configure("2") do |config|
         vb.gui = true
 
         # Configurar Modo Promiscuo en TODAS las interfaces L2.
+        (ADAPTER_START_INDEX..ADAPTER_END_INDEX).each do |adapter_index|
           vb.customize ["modifyvm", :id, "--nicpromisc#{adapter_index}", "allow-all"]
         end
         
